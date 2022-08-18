@@ -7,4 +7,15 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Spectre.Console" Version="0.44.1-preview.0.34" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="src\ANSI_Shadow.flf" />
+      <AdditionalFiles Include="src\ANSI_Shadow.flf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AdditionalFiles>
+    </ItemGroup>
+
 </Project>
