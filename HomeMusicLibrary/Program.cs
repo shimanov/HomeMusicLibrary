@@ -1,5 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-using Spectre.Console;
+﻿using Spectre.Console;
+
+Settings();
 
 //FIGLET
 var font = FigletFont.Load("src/ANSI_Shadow.flf");
@@ -26,6 +27,7 @@ AnsiConsole.WriteLine("");
 //      View Artist
 //      View albums
 //      View songs
+// 3. Exit
 
 //Main menu
 
@@ -74,6 +76,30 @@ if (mainMenu == "[cyan3]Exit[/]")
     Environment.Exit(0);
 }
 
+//Create settings for application
+void Settings()
+{
+    //User profile folder
+    var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    string settingsFolder = userFolder + "/.config/HomeMusicLibrary";
+
+    try
+    {
+        if (Directory.Exists(settingsFolder))
+        {
+            AnsiConsole.WriteLine("That path exists already.");
+            return;
+        }
+
+        DirectoryInfo info = Directory.CreateDirectory(settingsFolder);
+        AnsiConsole.WriteLine("Settings directory was created successfully");
+
+    }
+    catch (Exception e)
+    {
+        AnsiConsole.WriteException(e);
+    }
+}
 
 
 
