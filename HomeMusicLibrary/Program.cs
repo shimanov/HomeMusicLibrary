@@ -12,10 +12,10 @@ AnsiConsole.Write(
 AnsiConsole.Write(
     new FigletText(font, "   Music")
         .LeftAligned()
-        .Color(Color.Turquoise2));
+        .Color(Color.DarkTurquoise));
 AnsiConsole.Write(new FigletText(font, "     Library")
     .LeftAligned()
-    .Color(Color.Turquoise2));
+    .Color(Color.Cyan3));
 AnsiConsole.MarkupLine("[aqua]version 0.0.0.1(alpha)[/]");
 AnsiConsole.WriteLine("");
 //Main menu
@@ -37,7 +37,7 @@ var mainMenu = AnsiConsole.Prompt(
         .AddChoices(
             "[cyan3]Add new artist in library[/]", 
             "[cyan3]View library[/]", 
-            "[cyan3]Exit[/]"));
+            "[red]Exit[/]"));
 
 //Menu 1
 if (mainMenu == "[cyan3]Add new artist in library[/]")
