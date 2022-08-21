@@ -1,4 +1,7 @@
-﻿using Spectre.Console;
+﻿using System.Net.Http.Json;
+using HomeMusicLibrary;
+using Newtonsoft.Json;
+using Spectre.Console;
 
 Settings();
 
@@ -95,7 +98,14 @@ void Settings()
         //Create directory
         var info = Directory.CreateDirectory(settingsFolder);
         AnsiConsole.MarkupLine("[yellow]Settings directory was created successfully[/]");
-
+        
+        //Create settings file
+        SettingsFile settingsFile = new SettingsFile();
+        string jsonResult = JsonConvert.SerializeObject(settingsFile);
+        if (File.Exists(settingsFolder + "/.settings")) return;
+        using var tw = new StreamWriter(settingsFolder + "/.settings", true);
+        tw.WriteLine(jsonResult);
+        tw.Close();
     }
     catch (Exception e)
     {
