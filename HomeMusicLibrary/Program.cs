@@ -83,16 +83,17 @@ void Settings()
     var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
     string settingsFolder = userFolder + "/.config/HomeMusicLibrary";
 
+    //Try to create folder
     try
     {
         if (Directory.Exists(settingsFolder))
         {
-            AnsiConsole.WriteLine("That path exists already.");
+            AnsiConsole.MarkupLine("[yellow]That path exists already.[/]");
             return;
         }
 
-        DirectoryInfo info = Directory.CreateDirectory(settingsFolder);
-        AnsiConsole.WriteLine("Settings directory was created successfully");
+        var info = Directory.CreateDirectory(settingsFolder);
+        AnsiConsole.MarkupLine("[yellow]Settings directory was created successfully[/]");
 
     }
     catch (Exception e)
