@@ -91,7 +91,8 @@ void Settings()
             AnsiConsole.MarkupLine("[yellow]That path exists already.[/]");
             return;
         }
-
+        
+        //Create directory
         var info = Directory.CreateDirectory(settingsFolder);
         AnsiConsole.MarkupLine("[yellow]Settings directory was created successfully[/]");
 
