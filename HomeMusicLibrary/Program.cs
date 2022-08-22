@@ -42,8 +42,8 @@ var mainMenu = AnsiConsole.Prompt(
         .AddChoices(
             "[cyan3]Add new artist in library[/]", 
             "[cyan3]View library[/]",
-            "[cyan3]Edit settings[/]",
-            "[red]Exit[/]"));
+            "[dodgerblue1]Edit settings[/]",
+            "[red3_1]Exit[/]"));
 
 //Menu 1
 if (mainMenu == "[cyan3]Add new artist in library[/]")
@@ -75,13 +75,13 @@ if (mainMenu == "[cyan3]View library[/]")
 }
 
 //Menu 3
-if (mainMenu == "[cyan3]Edit settings[/]")
+if (mainMenu == "[dodgerblue1]Edit settings[/]")
 {
     
 }
 
 //Menu 4
-if (mainMenu == "[cyan3]Exit[/]")
+if (mainMenu == "[red3_1]Exit[/]")
 {
     Environment.Exit(0);
 }
@@ -100,40 +100,43 @@ void Settings()
         if (Directory.Exists(settingsFolder))
         {
             AnsiConsole.MarkupLine("[yellow]DEBUG: That path exists already.[/]");
+            AnsiConsole.MarkupLine("[yellow]DEBUG: The file is created earlier[/]");
             //Load settings
         }
-        
-        //Create directory
-        var info = Directory.CreateDirectory(settingsFolder);
-        AnsiConsole.MarkupLine("[yellow]DEBUG: Settings directory was created successfully[/]");
-        
-        //Setup and write settings in file
-        var settingsFile = new SettingsFile();
-        AnsiConsole.MarkupLine("[blue]Insert you Spotify ClientID[/]");
-        string? clientId = Console.ReadLine();
-        if (clientId != null) settingsFile.ClientID = clientId;
-
-        AnsiConsole.MarkupLine("[blue]Insert you Spotify ClientSecret[/]");
-        string? clientSecret = Console.ReadLine();
-        if (clientSecret != null) settingsFile.ClientSecret = clientSecret;
-        
-        var settingsMenu = AnsiConsole.Prompt(new SelectionPrompt<string>()
-            .Title("[blue]Chose database[/]")
-            .AddChoices("SQLite", "PostgreSQL", "MariaDB"));
-
-        if (settingsMenu == "SQLite")
+        else
         {
-            //Create SQLite
-            settingsFile.Path = "sqlite";
-        }
+            //Create directory
+            var info = Directory.CreateDirectory(settingsFolder);
+            AnsiConsole.MarkupLine("[yellow]DEBUG: Settings directory was created successfully[/]");
+        
+            //Setup and write settings in file
+            var settingsFile = new SettingsFile();
+            AnsiConsole.MarkupLine("[palegreen1_1]Insert you Spotify ClientID[/]");
+            string? clientId = Console.ReadLine();
+            if (clientId != null) settingsFile.ClientID = clientId;
 
-        //Create settings file
-        string jsonResult = JsonConvert.SerializeObject(settingsFile);
-        if (File.Exists(settingsFolder + "/.settings")) return;
-        using var tw = new StreamWriter(settingsFolder + "/.settings", true);
-        tw.WriteLine(jsonResult);
-        tw.Close();
-        AnsiConsole.MarkupLine("[yellow]DEBUG: Create settings file successful[/]");
+            AnsiConsole.MarkupLine("[palegreen1_1]Insert you Spotify ClientSecret[/]");
+            string? clientSecret = Console.ReadLine();
+            if (clientSecret != null) settingsFile.ClientSecret = clientSecret;
+        
+            var settingsMenu = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                .Title("[palegreen1_1]Chose database[/]")
+                .AddChoices("SQLite", "PostgreSQL", "MariaDB"));
+
+            if (settingsMenu == "SQLite")
+            {
+                //Create SQLite
+                settingsFile.Path = "sqlite";
+            }
+
+            //Create settings file
+            string jsonResult = JsonConvert.SerializeObject(settingsFile);
+            if (File.Exists(settingsFolder + "/.settings")) return;
+            using var tw = new StreamWriter(settingsFolder + "/.settings", true);
+            tw.WriteLine(jsonResult);
+            tw.Close();
+            AnsiConsole.MarkupLine("[yellow]DEBUG: Create settings file successful[/]");
+        }
     }
     catch (Exception e)
     {
