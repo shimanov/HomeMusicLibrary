@@ -176,7 +176,7 @@ void Settings(bool flag)
         using var tw = new StreamWriter(settingsFolder + "/.settings", true);
         tw.WriteLine(jsonResult);
         tw.Close();
-        AnsiConsole.MarkupLine("[yellow]DEBUG: Claim settings file successfully[/]");
+        AnsiConsole.MarkupLine("[palegreen1_1]Change file settings successfully![/]");
     }
 }
 
