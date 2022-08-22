@@ -133,6 +133,7 @@ void Settings()
         using var tw = new StreamWriter(settingsFolder + "/.settings", true);
         tw.WriteLine(jsonResult);
         tw.Close();
+        AnsiConsole.MarkupLine("[yellow]DEBUG: Create settings file successful[/]");
     }
     catch (Exception e)
     {
