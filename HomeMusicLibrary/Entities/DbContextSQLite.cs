@@ -2,8 +2,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeMusicLibrary.Entities;
 
-public class DbContextSQLite : DbContext
+public class DbContextSqLite : DbContext
 {
+    string path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
     // public DbSet<> {
     //     get;
     //     set;
@@ -11,6 +12,6 @@ public class DbContextSQLite : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Filename=HomeMusicLibrary.sqlite");
+        optionsBuilder.UseSqlite("Filename=" + path + "/.config/HomeMusicLibrary/" + "HomeMusicLibrary.db");
     }
 }
