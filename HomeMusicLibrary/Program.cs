@@ -18,7 +18,7 @@ AnsiConsole.Write(
 AnsiConsole.Write(new FigletText(font, "     Library")
     .LeftAligned()
     .Color(Color.Cyan3));
-AnsiConsole.MarkupLine("[aqua]version 0.0.0.2(alpha)[/]");
+AnsiConsole.MarkupLine("[aqua]version 0.0.0.3(alpha)[/]");
 AnsiConsole.WriteLine("");
 
 Settings(false);
@@ -53,7 +53,8 @@ if (mainMenu == "[cyan3]Add new artist in library[/]")
             .PageSize(10)
             .Title("Add new artist in library")
             .AddChoices(
-                "[springgreen3_1]Add new artist from file[/]", 
+                "[springgreen3_1]Import artists from Spotify[/]",
+                "[springgreen3_1]Add new artist from file[/]",
                 "[springgreen3_1]Add new artist[/]", 
                 "[springgreen3_1]Add new album[/]", 
                 "[springgreen3_1]Add song[/]", 
