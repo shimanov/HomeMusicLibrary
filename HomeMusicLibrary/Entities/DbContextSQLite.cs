@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeMusicLibrary.Entities;
 
-public class DbContextSqLite : DbContext
+public sealed class DbContextSqLite : DbContext
 {
     private readonly string _path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
     
@@ -12,8 +12,13 @@ public class DbContextSqLite : DbContext
     public DbSet<SpotifyId> SpotifyIds { get; set; }
     public DbSet<TrackModel> Tracks { get; set; }
 
+    public DbContextSqLite()
+    {
+        Database.EnsureCreated();
+    }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Filename=" + _path + "/.config/HomeMusicLibrary/" + "HomeMusicLibrary.db");
+        optionsBuilder.UseSqlite("Filename=" + _path + "/.config/HomeMusicLibrary/" + "HomeMusicLibrary.sqlite");
     }
 }

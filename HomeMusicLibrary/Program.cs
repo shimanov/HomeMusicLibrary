@@ -64,6 +64,15 @@ if (mainMenu == "[cyan3]Add new artist in library[/]")
                 "[springgreen3_1]Add new album[/]", 
                 "[springgreen3_1]Add song[/]", 
                 "[springgreen3_1]Main menu[/]"));
+    if (menuArtist == "[springgreen3_1]Add new artist from file[/]")
+    {
+        var artist = new Artist()
+        {
+            token = token
+        };
+        await artist.ArtistTask();
+        
+    }
 }
 
 //Menu 2
