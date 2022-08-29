@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace HomeMusicLibrary.Model;
 
-public class Track
+public class TrackModel
 {
     [Key, Required]
     public string Id { get; set; }

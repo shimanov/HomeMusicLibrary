@@ -10,9 +10,12 @@ public class SpotifyToken
     public async Task<string> Token()
     {
         //Read ClientId and ClientSecret from settings file
-        StreamReader reader = new StreamReader("");
+        var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) 
+                         + "/.config/HomeMusicLibrary/.settings";
+        StreamReader reader = new StreamReader(userFolder);
         string jsonStr = await reader.ReadToEndAsync();
-        SettingsFile settingsFile = JsonConvert.DeserializeObject<SettingsFile>(jsonStr);
+        SettingsFile settingsFile = JsonConvert.DeserializeObject<SettingsFile>(jsonStr) 
+                                    ?? throw new InvalidOperationException();
         
         //Get access token
         var config = SpotifyClientConfig.CreateDefault();

@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Json;
 using HomeMusicLibrary;
+using HomeMusicLibrary.Entities;
 using Newtonsoft.Json;
 using Spectre.Console;
 
@@ -22,6 +23,10 @@ AnsiConsole.MarkupLine("[aqua]version 0.0.0.3(alpha)[/]");
 AnsiConsole.WriteLine("");
 
 Settings(false);
+
+//Spotify token
+var spotifyToken = new SpotifyToken();
+string token = await spotifyToken.Token();
 
 //Main menu
 // 1. Add new artist in library
