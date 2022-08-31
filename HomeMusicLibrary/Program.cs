@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
 using HomeMusicLibrary;
 using HomeMusicLibrary.Entities;
+using HomeMusicLibrary.Model;
 using Newtonsoft.Json;
 using Spectre.Console;
 
@@ -19,7 +20,7 @@ AnsiConsole.Write(
 AnsiConsole.Write(new FigletText(font, "     Library")
     .LeftAligned()
     .Color(Color.Cyan3));
-AnsiConsole.MarkupLine("[aqua]version 0.0.0.3(alpha)[/]");
+AnsiConsole.MarkupLine("[aqua]version 0.0.0.4(alpha)[/]");
 AnsiConsole.WriteLine("");
 
 Settings(false);
@@ -58,12 +59,14 @@ if (mainMenu == "[cyan3]Add new artist in library[/]")
             .PageSize(10)
             .Title("Add new artist in library")
             .AddChoices(
-                "[springgreen3_1]Import artists from Spotify[/]",
-                "[springgreen3_1]Add new artist from file[/]",
-                "[springgreen3_1]Add new artist[/]", 
-                "[springgreen3_1]Add new album[/]", 
-                "[springgreen3_1]Add song[/]", 
-                "[springgreen3_1]Main menu[/]"));
+                "[springgreen3_1]Import artists from Spotify[/]", //1
+                "[springgreen3_1]Add new artist from file[/]",    //2  
+                "[springgreen3_1]Add new artist[/]",              //3
+                "[springgreen3_1]Add new album[/]",               //4  
+                "[springgreen3_1]Add song[/]",                    //5  
+                "[springgreen3_1]Main menu[/]"));                 //6  
+    
+    //2
     if (menuArtist == "[springgreen3_1]Add new artist from file[/]")
     {
         var artist = new Artist()
@@ -71,7 +74,25 @@ if (mainMenu == "[cyan3]Add new artist in library[/]")
             token = token
         };
         await artist.ArtistTask();
-        
+    }
+
+    //4
+    if (menuArtist == "[springgreen3_1]Add new album[/]")
+    {
+        using (DbContextSqLite db = new DbContextSqLite())
+        {
+            var artist = db.Artists.ToList();
+            foreach (ArtistModel artistModel in artist)
+            {
+                var album = new Album()
+                {
+                    token = token,
+                    artistId = artistModel.ArtistId
+                };
+                await album.AlbumTask();
+            }
+            AnsiConsole.MarkupLine("[green]Новые альбомы добавлены БД[/]");
+        }
     }
 }
 
