@@ -94,6 +94,25 @@ if (mainMenu == "[cyan3]Add new artist in library[/]")
             AnsiConsole.MarkupLine("[green]Новые альбомы добавлены БД[/]");
         }
     }
+    
+    //5
+    if (menuArtist == "[springgreen3_1]Add song[/]")
+    {
+        using (DbContextSqLite db = new DbContextSqLite())
+        {
+            var album = db.Albums.ToList();
+            foreach (AlbumModel song in album)
+            {
+                var s = new Song()
+                {
+                    token = token,
+                    albumId = song.AlbumId
+                };
+                await s.SongTask();
+            }
+        }
+        AnsiConsole.MarkupLine("[mediumpurple2]Новые треки добавлены в БД[/]");
+    }
 }
 
 //Menu 2
