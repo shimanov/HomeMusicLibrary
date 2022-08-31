@@ -10,7 +10,7 @@ public sealed class DbContextSqLite : DbContext
     public DbSet<AlbumModel> Albums { get; set; }
     public DbSet<ArtistModel> Artists { get; set; }
     public DbSet<SpotifyId> SpotifyIds { get; set; }
-    public DbSet<TrackModel> Tracks { get; set; }
+    public DbSet<SongModel> Songs { get; set; }
 
     public DbContextSqLite()
     {
