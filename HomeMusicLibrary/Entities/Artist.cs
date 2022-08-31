@@ -25,7 +25,6 @@ public class Artist
                     var search = await spotify.Search.Item(new SearchRequest(SearchRequest.Types.Artist, artist));
                     await foreach (var a in spotify.Paginate(search.Artists, response => response.Artists))
                     {
-                        //TODO: Допилить
                         compareResult = string.Compare(artist, a.Name, StringComparison.OrdinalIgnoreCase);
                         if (compareResult == 0)
                         {
@@ -41,7 +40,7 @@ public class Artist
                                 await context.Artists.AddRangeAsync(entities);
                                 await context.SaveChangesAsync();
                                 AnsiConsole.MarkupLine(
-                                    "[yellow] DEBUG: Artist: {0}\n ID: {1}\n :check_mark_button: Записано в таблицу\n[/]",
+                                    "[yellow2] DEBUG: Artist: {0}\n ID: {1}\n :check_mark_button: Записано в таблицу\n[/]",
                                     a.Name, a.Id);
                             }
                             catch (Exception e)
@@ -51,7 +50,7 @@ public class Artist
                         }
                         else
                         {
-                            AnsiConsole.MarkupLine("[yellow] DEBUG: {0}[/]", compareResult);
+                            AnsiConsole.MarkupLine("[red3_1] DEBUG: {0}[/]", compareResult);
                         }
                     }
                 }
@@ -63,7 +62,7 @@ public class Artist
         }
         else
         {
-            AnsiConsole.WriteLine("[yellow3] Нет данных для поиска[/]");
+            AnsiConsole.WriteLine("[yellow2] Нет данных для поиска[/]");
         }
     }
 }

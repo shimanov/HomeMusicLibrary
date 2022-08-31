@@ -117,15 +117,15 @@ void Settings(bool flag)
         {
             if (Directory.Exists(settingsFolder))
             {
-                AnsiConsole.MarkupLine("[yellow]DEBUG: That path exists already.[/]");
-                AnsiConsole.MarkupLine("[yellow]DEBUG: The file is created earlier[/]");
+                AnsiConsole.MarkupLine("[yellow2]DEBUG: That path exists already.[/]");
+                AnsiConsole.MarkupLine("[yellow2]DEBUG: The file is created earlier[/]");
                 //Load settings
             }
             else
             {
                 //Create directory
                 var info = Directory.CreateDirectory(settingsFolder);
-                AnsiConsole.MarkupLine("[yellow]DEBUG: Settings directory was created successfully[/]");
+                AnsiConsole.MarkupLine("[yellow2]DEBUG: Settings directory was created successfully[/]");
 
                 //Setup and write settings in file
                 var settingsFile = new SettingsFile();
@@ -151,7 +151,7 @@ void Settings(bool flag)
                 using var tw = new StreamWriter(settingsFolder + "/.settings", true);
                 tw.WriteLine(jsonResult);
                 tw.Close();
-                AnsiConsole.MarkupLine("[yellow]DEBUG: Create settings file successful[/]");
+                AnsiConsole.MarkupLine("[yellow2]DEBUG: Create settings file successful[/]");
             }
         }
         catch (Exception e)
