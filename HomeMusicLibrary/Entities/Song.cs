@@ -30,7 +30,8 @@ public class Song
                     await context.Songs.AddRangeAsync(s);
                     await context.SaveChangesAsync();
                 }
-                AnsiConsole.MarkupLine("[yellow2] DEBUG: {0}. {1}. {2}[/]", 
+
+                Console.WriteLine("DEBUG: {0}. {1}. {2}", 
                     song.TrackNumber, song.Name, song.DurationMs);
             }
         }
