@@ -76,6 +76,21 @@ if (mainMenu == "[cyan3]Add new artist in library[/]")
         await artist.ArtistTask();
     }
 
+    //3
+    if (menuArtist == "[springgreen3_1]Add new artist[/]")
+    {
+        AnsiConsole.WriteLine("Enter name:");
+        string s = Console.ReadLine();
+        if (s != string.Empty)
+        {
+            var searchArt = new SearchArtist()
+            {
+                token = token
+            };
+            await searchArt.SearchArtistTask(s);
+        }
+    }
+    
     //4
     if (menuArtist == "[springgreen3_1]Add new album[/]")
     {
