@@ -1,5 +1,4 @@
-﻿using System.Net.Http.Json;
-using HomeMusicLibrary;
+﻿using HomeMusicLibrary;
 using HomeMusicLibrary.Entities;
 using HomeMusicLibrary.Model;
 using Newtonsoft.Json;
@@ -11,14 +10,14 @@ var font = FigletFont.Load("src/ANSI_Shadow.flf");
 AnsiConsole.Write("\n");
 AnsiConsole.Write(
     new FigletText(font, " Home")
-        .LeftAligned()
+        //.LeftAligned()
         .Color(Color.Turquoise2));
 AnsiConsole.Write(
     new FigletText(font, "   Music")
-        .LeftAligned()
+        //.LeftAligned()
         .Color(Color.DarkTurquoise));
 AnsiConsole.Write(new FigletText(font, "     Library")
-    .LeftAligned()
+    //.LeftAligned()
     .Color(Color.Cyan3));
 AnsiConsole.MarkupLine("[aqua]version 0.0.0.4(alpha)[/]");
 AnsiConsole.WriteLine("");

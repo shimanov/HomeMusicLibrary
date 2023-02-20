@@ -1,4 +1,3 @@
-using System.Net.Http.Json;
 using Newtonsoft.Json;
 using Spectre.Console;
 using SpotifyAPI.Web;

@@ -8,11 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.8" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-      <PackageReference Include="Spectre.Console" Version="0.44.1-preview.0.34" />
-      <PackageReference Include="SpotifyAPI.Web" Version="6.3.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.3" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+      <PackageReference Include="Spectre.Console" Version="0.46.0" />
+      <PackageReference Include="SpotifyAPI.Web" Version="7.0.0" />
       <PackageReference Include="SpotifyAPI.Web.Auth" Version="6.3.0" />
     </ItemGroup>
 
